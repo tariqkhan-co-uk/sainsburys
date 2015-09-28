@@ -42,7 +42,6 @@ if(!Array.prototype.indexOf) {
 }
 ```
 
-
 ## Design Test
 
 > [Link](https://rawgit.com/tariqkhan-co-uk/sainsburys/master/design.html)
@@ -50,10 +49,10 @@ if(!Array.prototype.indexOf) {
 Again, I would usually seperate html from css and javascript, but have not for the purpose of this test to enable you to view all relevant code from within one file.
 
 * I have catered for ALL devices by implementing fully responsive.
-* Clicking on the menu will display additional menu entries. Although, not implemented, you can have the menu close when clicking anywhere other than the menu by implementing a 'back to top' link, which has height and width set to 100% and positioned below the menu when the navigation target is active.
+* Clicking on the menu will display additional menu entries. Although, not implemented, you can have the menu close when clicking anywhere other than the menu by implementing an opaque 'back to top' link, which has height and width set to 100% and positioned below the menu when the navigation target is active.
 * I have not used javascript.
 * I have not used Bootstrap/Foundation
-* I have not applied any attributes to the html tags and have instead creating div elements within. I usually do this, in case, support for an older browser is required.
+* I have not applied any attributes to html5 tags and have instead creating div elements within. I usually do this, in case, support for an older browser is required.
 
 Implemented cross-compatibility for the following browsers:
 * Chrome
