@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-gb">
+<head>
+	<meta charset="utf-8">
+	<title>Sainsbury's programming test</title>
+	<!--[if ie]><meta http-equiv="imagetoolbar" content="no"><![endif]-->
+	<meta name="author" content="Tariq Khan">
+	<style media="all">
+		@charset "UTF-8";
+		body {
+			margin:0;
+			background:#F1F1F1;
+			font:95% sans-serif;
+		}
+		ul {
+			padding:0;
+			float:left;
+			margin:20px 10px;
+		}
+		li {
+			float:left;
+			margin:10px;
+			width:240px;
+			height:240px;
+			list-style:none;
+			position:relative;
+		}
+		a {
+			float:left;
+			width:100%;
+			height:100%;
+			box-sizing:border-box;
+		}
+		img {
+			top:50%;
+			left:50%;
+			z-index:-1;
+			position:absolute;
+			-webkit-transform:translate(-50%,-50%);
+			transform:translate(-50%,-50%);
+		}
+		.selected {
+			border:5px solid #900;
+		}
+		.selected:after {
+			top:0;
+			right:0;
+			color:#FFF;
+			background:#900;
+			padding:5px 10px;
+			content:'Selected';
+			position:absolute;
+		}
+	</style>
+</head>
+<body>
+	<p id="nojs">JavaScript is required for this to work.</p>
+	<script>
+		// I don't like using frameworks, but jQuery is everywhere and it greatly simplifies common tasks; DOM manipulation, AJAX requests, etc.
+		(function() { // Encapsulated anonymous function to avoid cluttering up the global scope
+			// -- I have relocated function cb as it was out of scope and needs to be global to work -- //
+			var tags = 'london', // 1 tag? Why would this not be included directly into script.src?
+				script = document.createElement('script'); // var, var, var... cleaner and simpler to just var once!
+			// This gets around 'same origin policy violation' ...nice :-/
+			script.src ='http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=cb&tags=' + tags;
+			// I would advise not to build a page based on data obtained using js; should be back-end and scripts should be in the body
+			document.body.appendChild(script); // AJAX load flickr feed for callback (cb)
+		})();
+		function cb(data) { // Presuming cb is callback... use returned data
+			var selected = localStorage.getItem('selected') ? JSON.parse(localStorage.getItem('selected')) : [], // Get stored selected items and convert to JSON if exists
+				blocks = document.createElement('ul'), // Create the unordered list element
+				nojs = document.getElementById('nojs'), // This page should be constructed server side, get no JS text notification element for removal
+				i; // initialisation of iteration counter
+			nojs.parentNode.removeChild(nojs); // Bulletproof method of deletion of no JS text notification
+			for(i in data.items) { // For every item in the object; i is the iteration count
+				var block = document.createElement('li'), // Create a list item
+					anchor = document.createElement('a'), // Create an anchor
+					image = document.createElement('img'); // Create an image
+				image.src = data.items[i].media.m; // Set the image source URL
+				anchor.appendChild(image); // Add image into anchor
+				anchor.href = '#'; // Set link destination as in page anchor
+				if(selected.indexOf(image.src) != -1) { // Check cached local storage to see if image source is selected
+					anchor.className = 'selected'; // Give the anchor a class of selected
+				}
+				anchor.addEventListener('click', function(event) { // On click event for the anchor
+					event.preventDefault(); // Stop link doing its thing/linking
+					if(this.className.replace(/selected/, '') == this.className) { // If the anchor is not selected
+						this.className += " selected"; // Include selected as a class name
+						selected.push(this.firstChild.src); // Update cached localstorage with the image source URL
+						localStorage.setItem('selected', JSON.stringify(selected)); // Convert JSON to string and update localstorage
+					} else { // Anchor is selected so unselect it
+						this.className = this.className.replace(/selected/, ''); // Remove selected class name
+						var index = selected.indexOf(this.firstChild.src); // Get the image source URL
+						selected.splice(index, 1); // Remove the first mathing image source URL from cached localstorage
+						localStorage.setItem('selected', JSON.stringify(selected));	// Convert JSON to string and update localstorage
+					}
+				});
+				block.appendChild(anchor); // Add the anchor into the list item
+				blocks.appendChild(block); // Add the list item into the unordered list element
+			}
+			document.body.appendChild(blocks); // Render the unordered list by adding it to the body
+		}
+	</script>
+</body>
+</html>
