@@ -1,0 +1,435 @@
+//colors
+$color_celeste_approx: #ccc;
+$black: #000;
+$white: #fff;
+$seashell: #f1f1f1;
+
+//fonts
+$font_0: helvetica;
+$font_1: sans-serif;
+$font_2: times;
+$font_3: serif;
+
+//@extend-elements
+//original selectors
+//html, body, div, img, p, h1, h2, ul, li, a
+%extend_1 {
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+//original selectors
+//a:hover, a:active, a:focus
+%extend_2 {
+	outline: 0;
+	color: $white;
+	background: $black;
+}
+
+//original selectors
+//.skiplinks ul, .skiplinks li
+%extend_3 {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+//original selectors
+//.skiplinks a:focus, .skiplinks a:active
+%extend_4 {
+	left: 5%;
+	top: 85px;
+	clip: auto;
+	width: auto;
+	height: auto;
+}
+
+
+@charset "UTF-8";
+html {
+	@extend %extend_1;
+	height: 100%;
+	overflow-y: scroll;
+}
+body {
+	@extend %extend_1;
+	color: $black;
+	height: 100%;
+	background: $white;
+	font: 120%/140% $font_0, $font_1;
+}
+div {
+	@extend %extend_1;
+}
+img {
+	@extend %extend_1;
+	border: 0;
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+}
+p {
+	@extend %extend_1;
+}
+h1 {
+	@extend %extend_1;
+	font: 400 100%/110% $font_2, $font_3;
+	font-size: 200%;
+	text-transform: capitalize;
+}
+h2 {
+	@extend %extend_1;
+	font: 400 100%/110% $font_2, $font_3;
+	font-size: 150%;
+	margin: 0 0 10px;
+}
+ul {
+	@extend %extend_1;
+	margin: 0 0 0 1em;
+}
+li {
+	@extend %extend_1;
+}
+a {
+	@extend %extend_1;
+	color: $black;
+	text-decoration: none;
+	transition: all .5s;
+	&:hover {
+		@extend %extend_2;
+	}
+	&:active {
+		@extend %extend_2;
+	}
+	&:focus {
+		@extend %extend_2;
+	}
+}
+article {
+	display: block;
+}
+aside {
+	display: block;
+}
+footer {
+	display: block;
+}
+header {
+	display: block;
+}
+nav {
+	display: block;
+}
+section {
+	display: block;
+}
+small {
+	font-size: 95%;
+}
+::-moz-selection {
+	color: $white;
+	background: $black;
+}
+::selection {
+	color: $white;
+	background: $black;
+}
+.skiplinks {
+	ul {
+		@extend %extend_3;
+	}
+	li {
+		@extend %extend_3;
+	}
+	a {
+		z-index: 1;
+		width: 1px;
+		height: 1px;
+		padding: 0 5px;
+		display: block;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		clip: rect(1px,1px,1px,1px);
+		&:focus {
+			@extend %extend_4;
+		}
+		&:active {
+			@extend %extend_4;
+		}
+	}
+}
+.header {
+	width: 90%;
+	overflow: hidden;
+	margin: 20px auto 25px;
+	font: italic 250%/110% $font_2, $font_3;
+	a {
+		float: left;
+		padding: 0 10px 0 0;
+	}
+	img {
+		max-width: 60px;
+		display: inline-block;
+		font: 30%/300% $font_0, $font_1;
+	}
+}
+@media all and(max-width:450px) {
+	.header {
+		font-size: 200%;
+	}
+}
+@media print, all and(max-width:414px) {
+	.header {
+		width: 95%;
+		margin: 10px auto 25px;
+		a {
+			padding: 0;
+			width: 100%;
+		}
+	}
+}
+@media all and(max-width:350px) {
+	.header {
+		font-size: 170%;
+	}
+}
+@media all and(max-width:310px) {
+	.header {
+		text-align: center;
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+	}
+}
+.navigation {
+	width: 90%;
+	padding: 5px 0;
+	text-align: center;
+	margin: 0 auto 50px;
+	background: $seashell;
+	border: 1px solid $black;
+	ul {
+		margin: 0 10px;
+		font-size: 120%;
+		overflow: hidden;
+		list-style: none;
+	}
+	li {
+		width: 19%;
+		float: left;
+	}
+	.first {
+		width: 12%;
+		text-align: left;
+	}
+	.last {
+		width: 12%;
+		text-align: left;
+		text-align: right;
+	}
+	a {
+		padding: 0 5px;
+	}
+}
+.trigger {
+	display: none;
+}
+@media all and(max-width:650px) {
+	.navigation {
+		width: 4em;
+		padding: 4px 0;
+		margin: 0 auto 20px;
+		&:target {
+			width: 95%;
+			ul {
+				display: block;
+			}
+		}
+		.trigger {
+			font-size: 120%;
+			background: none;
+			margin: 1px auto;
+			display: inline-block;
+			text-transform: lowercase;
+		}
+		ul {
+			margin: 0 5px;
+			display: none;
+		}
+		li {
+			width: 100%;
+		}
+		.first {
+			width: 100%;
+			text-align: center;
+		}
+		.last {
+			width: 100%;
+			text-align: center;
+		}
+		a {
+			margin: 1px 0;
+			display: block;
+			padding: 2px 5px;
+			background: $color_celeste_approx;
+			&:hover {
+				background: $black;
+			}
+		}
+	}
+}
+@media print {
+	.navigation {
+		display: none;
+	}
+	.more {
+		display: none;
+	}
+	.footer {
+		display: none;
+	}
+}
+.content {
+	width: 90%;
+	margin: 0 auto;
+	overflow: hidden;
+	.first:before {
+		width: 28%;
+		height: 6em;
+		content: '';
+		float: right;
+		display: block;
+	}
+}
+.article {
+	width: 77%;
+	float: left;
+}
+.article_body {
+	margin: 20px 0 0;
+	position: relative;
+	p {
+		margin: 0 0 1em;
+	}
+}
+@media print, all and(max-width:600px) {
+	small {
+		display: block;
+		padding: 0 0 10px;
+	}
+	.content {
+		width: 95%;
+	}
+	.article {
+		width: 100%;
+	}
+	.article_body {
+		margin: 15px 0 0;
+	}
+	.aside {
+		display: none;
+	}
+}
+.more {
+	top: 0;
+	right: 0;
+	width: 26%;
+	overflow: auto;
+	max-height: 6em;
+	overflow-x: hidden;
+	position: absolute;
+	h2 {
+		margin: 0 0 5px;
+		font-size: 130%;
+		font-weight: 700;
+	}
+}
+@media print, all and(max-width:670px) {
+	.more {
+		top: auto;
+		right: auto;
+		width: auto;
+		overflow: auto;
+		max-height: 100%;
+		position: static;
+	}
+	.footer {
+		width: 95%;
+		min-height: 0;
+		padding: 5px 0;
+		margin: 15px auto 0;
+		ul {
+			top: auto;
+			right: auto;
+			float: none;
+			width: 100%;
+			position: static;
+		}
+		li {
+			float: left;
+			width: 33.333%;
+			text-align: center;
+		}
+		a {
+			float: none;
+			display: inline-block;
+		}
+		img {
+			max-width: 30px;
+		}
+	}
+	.content .first:before {
+		display: none;
+	}
+}
+.aside {
+	width: 22%;
+	float: right;
+	a {
+		display: block;
+		margin: -4px 0 30px;
+	}
+}
+@media all and(max-width:750px) {
+	.aside h2 {
+		font-size: 120%;
+	}
+}
+.footer {
+	width: 90%;
+	min-height: 50px;
+	overflow: hidden;
+	margin: 5px auto 0;
+	background: $seashell;
+	border: 1px solid $black;
+	border-bottom: 0;
+	ul {
+		top: 0;
+		right: 4%;
+		margin: 0;
+		float: right;
+		list-style: none;
+		position: absolute;
+	}
+	li {
+		float: left;
+	}
+	a {
+		float: left;
+		margin: 0 2px;
+		border-radius: 50%;
+		border: 5px solid transparent;
+	}
+	img {
+		max-width: 60px;
+		font: 100%/300% $font_0, $font_1;
+	}
+}
+@media all and(max-width:700px) {
+	.footer a {
+		margin: 0;
+	}
+}
