@@ -62,7 +62,7 @@
 			var tags = 'london', // 1 tag? Why would this not be included directly into script.src?
 				script = document.createElement('script'); // var, var, var... cleaner and simpler to just var once!
 			// This gets around 'same origin policy violation' ...nice :-/
-			script.src ='http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=cb&tags=' + tags;
+			script.src ='//api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=cb&tags=' + tags; // Removed protocal to prevent mixed active content
 			// I would advise not to build a page based on data obtained using js; should be back-end and scripts should be in the body
 			document.body.appendChild(script); // AJAX load flickr feed for callback (cb)
 		})();
