@@ -119,34 +119,12 @@
 			float:left;
 			padding:0 10px 0 0;
 		}
-		.header ul {
-			margin:0;
-			float:right;
-			list-style:none;
-		}
-		.header li {
-			float:left;
-			margin:0 0 0 10px;
-		}
-		.header li a {
-			padding:0;
-			border-radius:50%;
-			border:5px solid transparent;
-		}
-		.header li a:focus, .header li a:active {
-			border-color:#F1F1F1;
-		}
 		.header img {
 			max-width:60px;
 			display:inline-block;
-			font:30%/300% helvetica, sans-serif;
+			font:30%/300% helvetica,sans-serif;
 		}
 		@media all and (max-width:450px) {
-			.header {
-				font-size:235%;
-			}
-		}
-		@media all and (max-width:430px) {
 			.header {
 				font-size:200%;
 			}
@@ -160,35 +138,8 @@
 				padding:0;
 				width:100%;
 			}
-			.header ul {
-				bottom:0;
-				left:-5%;
-				right:-5%;
-				z-index:1;
-				width:95%;
-				float:none;
-				margin:0 auto;
-				position:fixed;
-				background:#F1F1F1;
-				border:1px solid #000;
-				border-bottom:0;
-			}
-			.header li {
-				margin:0;
-				float:left;
-				width:33.333%;
-				text-align:center;
-			}
-			.header li a {
-				border:0;
-				background:none;
-			}
-			.header li img {
-				margin:10px 0;
-				max-width:30px;
-			}
 		}
-		@media all and (max-width:335px) {
+		@media all and (max-width:350px) {
 			.header {
 				font-size:170%;
 			}
@@ -200,14 +151,6 @@
 			.header img {
 				display:block;
 				margin:0 auto;
-			}
-			.header li img {
-				display:inline-block;
-			}
-		}
-		@media print {
-			.header ul {
-				display:none;
 			}
 		}
 		/*NAVIGATION*/
@@ -382,15 +325,68 @@
 		.footer {
 			width:90%;
 			min-height:50px;
+			overflow:hidden;
 			margin:5px auto 0;
 			background:#F1F1F1;
 			border:1px solid #000;
 			border-bottom:0;
 		}
-		@media print, all and (max-width:414px) {
+		.footer ul {
+			top:0;
+			right:4%;
+			margin:0;
+			float:right;
+			list-style:none;
+			position:absolute;
+		}
+		.footer li {
+			float:left;
+		}
+		.footer a {
+			float:left;
+			margin:0 2px;
+			border-radius:50%;
+			border:5px solid transparent;
+		}
+		.footer img {
+			max-width:60px;
+			font:100%/300% helvetica,sans-serif;
+		}
+		@media all and (max-width:700px) {
+			.footer a {
+				margin:0;
+			}
+		}
+		@media print, all and (max-width:670px) {
 			.footer {
-				border:0;
-				background:none;
+				width:95%;
+				min-height:0;
+				padding:5px 0;
+				margin:15px auto 0;
+			}
+			.footer ul {
+				top:auto;
+				right:auto;
+				float:none;
+				width:100%;
+				position:static;
+			}
+			.footer li {
+				float:left;
+				width:33.333%;
+				text-align:center;
+			}
+			.footer a {
+				float:none;
+				display:inline-block;
+			}
+			.footer img {
+				max-width:30px;
+			}
+		}
+		@media print {
+			.footer {
+				display:none;
 			}
 		}
 	</style>
@@ -401,19 +397,13 @@
 			<ul>
 				<li><a href="#navigation">Main site navigation</a></li>
 				<li><a href="#content">Content</a></li>
+				<li><a href="#footer">Footer</a></li>
 			</ul>
 		</div>
 	</nav>
 	<header>
 		<div class="header">
 			<a href="#home"><img src="images/logo.png" alt=""> Company Name</a>
-			<nav>
-				<ul>
-					<li><a href="#facebook"><img src="images/facebook.png" alt="Facebook"></a></li>
-					<li><a href="#twitter"><img src="images/twitter.png" alt="Twitter"></a></li>
-					<li><a href="#google"><img src="images/google.png" alt="Google+"></a></li>
-				</ul>
-			</nav>
 		</div>
 	</header>
 	<nav>
@@ -469,7 +459,15 @@
 		</aside>
 	</div>
 	<footer>
-		<div id="footer" class="footer"></div>
+		<div id="footer" class="footer">
+			<nav>
+				<ul>
+					<li><a href="#facebook"><img src="images/facebook.png" alt="Facebook"></a></li>
+					<li><a href="#twitter"><img src="images/twitter.png" alt="Twitter"></a></li>
+					<li><a href="#google"><img src="images/google.png" alt="Google+"></a></li>
+				</ul>
+			</nav>
+		</div>
 	</footer>
 </body>
 </html>

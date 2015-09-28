@@ -4,7 +4,7 @@
 
 ## Programming Test
 
-> [Link](https://cdn.rawgit.com/tariqkhan-co-uk/sainsburys/master/programming.html)
+> [Link](https://rawgit.com/tariqkhan-co-uk/sainsburys/master/programming.html)
 
 Any problems I've encountered have been noted as comments within the source code. I may have over-commented?
 
@@ -21,11 +21,31 @@ I would usually seperate html from css and javascript, but have not for the purp
 Implemented cross-compatibility for the following browsers:
 * Chrome
 * Firefox
-* IE versions
+* IE versions 9+
+
+IE 7 and 8 can be supported by implementing code to 'attachEvent' rather than 'addEventListener' and including code alternative to 'indexOf':
+
+```html
+if(!Array.prototype.indexOf) {
+	Array.prototype.indexOf = function(obj, fromIndex) {
+		if(fromIndex == null) {
+			fromIndex = 0;
+		} else if(fromIndex < 0) {
+			fromIndex = Math.max(0, this.length + fromIndex);
+		}
+		for(var i = fromIndex; i < this.length; i++) {
+			if(this[i] === obj)
+				return i;
+		}
+		return -1;
+	};
+}
+```
+
 
 ## Design Test
 
-> [Link](https://cdn.rawgit.com/tariqkhan-co-uk/sainsburys/master/design.html)
+> [Link](https://rawgit.com/tariqkhan-co-uk/sainsburys/master/design.html)
 
 Again, I would usually seperate html from css and javascript, but have not for the purpose of this test to enable you to view all relevant code from within one file.
 
@@ -38,4 +58,7 @@ Again, I would usually seperate html from css and javascript, but have not for t
 Implemented cross-compatibility for the following browsers:
 * Chrome
 * Firefox
-* IE versions
+* IE versions 9+
+
+IE 8 is supported with the use of respond.js (polyfill for min/max-width)
+IE 7 is supported with use of 1 conditional statement to enable relocating the 'More...' section as per mobile design view
