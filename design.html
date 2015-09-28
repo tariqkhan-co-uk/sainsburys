@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en-gb">
+<head>
+	<meta charset="utf-8">
+	<title>Sainsbury's design test</title>
+	<!--[if ie]><meta http-equiv="imagetoolbar" content="no"><![endif]-->
+	<meta name="author" content="Tariq Khan">
+	<meta name="description" content="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam fermentum.">
+	<meta name="robots" content="index,follow,noodp">
+	<meta name="googlebot" content="noodp">
+	<meta name="revisit-after" content="30 days">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Company Name">
+	<meta name="application-name" content="Company Name">
+	<style rel="stylesheet" type="text/css" media="all">
+		@charset "UTF-8";
+		html, body, div, img, p, h1, h2, ul, li, a { /* Reset style to a browser consistent baseline */
+			margin:0;
+			padding:0;
+			vertical-align:top;
+		}
+		html {
+			height:100%;
+			overflow-y:scroll; /* Make verticle scroll visible on all desktop browsers */
+			-webkit-text-size-adjust:none; /* Remove orientation change text resize on iphones */
+		}
+		body {
+			color:#000;
+			height:100%;
+			background:#FFF;
+			font:120%/140% helvetica, sans-serif;
+		}
+		article, aside, footer, header, nav, section { /* Corrects block display not defined in IE6/7/8/9 & FF3 */
+			display:block;
+		}
+		img { /* Default img and 100% for media queries */
+			border:0;
+			width:100%;
+			height:auto;
+			max-width:100%;
+			-moz-user-select:none;
+			-webkit-user-select:none;
+			-webkit-user-drag:none;
+			-ms-interpolation-mode:bicubic;
+		}
+		small {
+			font-size:95%;
+		}
+		::-moz-selection { /* Required for Firefox v38 to 44; see below */
+			color:#FFF;
+			background:#000;
+		}
+		::selection { /* Change text highlight color */
+			color:#FFF;
+			background:#000;
+		}
+		a { /* !!! BAD: Accessibility fail as links are not identifiable, ignoring for the purpose of this test */
+			color:#000;
+			text-decoration:none;
+			-moz-user-select:none;
+			-webkit-user-select:none;
+			-webkit-user-drag:none;
+			-webkit-transition:all .5s;
+			transition:all .5s;
+		}
+		a:hover, a:active, a:focus {
+			outline:0;
+			color:#FFF;
+			background:#000;
+		}
+		ul {
+			margin:0 0 0 1em;
+		}
+		h1, h2 {
+			font:400 100%/110% times,serif;
+		}
+		h1 {
+			font-size:200%;
+			text-transform:capitalize;
+		}
+		h2 {
+			font-size:150%;
+			margin:0 0 10px;
+		}
+		/*SKIPLINKS*/
+		.skiplinks ul, .skiplinks li {
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+		.skiplinks a {
+			z-index:1;
+			width:1px;
+			height:1px;
+			padding:0 5px;
+			display:block;
+			overflow:hidden;
+			position:absolute;
+			white-space:nowrap;
+			clip:rect(1px,1px,1px,1px);
+		}
+		.skiplinks a:focus, .skiplinks a:active {
+			left:5%;
+			top:85px;
+			clip:auto;
+			width:auto;
+			height:auto;
+		}
+		/*HEADER*/
+		.header {
+			width:90%;
+			overflow:hidden;
+			margin:20px auto 25px;
+			font:italic 250%/110% times,serif;
+		}
+		.header a {
+			float:left;
+			padding:0 10px 0 0;
+		}
+		.header ul {
+			margin:0;
+			float:right;
+			list-style:none;
+		}
+		.header li {
+			float:left;
+			margin:0 0 0 10px;
+		}
+		.header li a {
+			padding:0;
+			border-radius:50%;
+			border:5px solid transparent;
+		}
+		.header li a:focus, .header li a:active {
+			border-color:#F1F1F1;
+		}
+		.header img {
+			max-width:60px;
+			display:inline-block;
+			font:30%/300% helvetica, sans-serif;
+		}
+		@media all and (max-width:450px) {
+			.header {
+				font-size:235%;
+			}
+		}
+		@media all and (max-width:430px) {
+			.header {
+				font-size:200%;
+			}
+		}
+		@media print, all and (max-width:414px) {
+			.header {
+				width:95%;
+				margin:10px auto 25px;
+			}
+			.header a {
+				padding:0;
+				width:100%;
+			}
+			.header ul {
+				bottom:0;
+				left:-5%;
+				right:-5%;
+				z-index:1;
+				width:95%;
+				float:none;
+				margin:0 auto;
+				position:fixed;
+				background:#F1F1F1;
+				border:1px solid #000;
+				border-bottom:0;
+			}
+			.header li {
+				margin:0;
+				float:left;
+				width:33.333%;
+				text-align:center;
+			}
+			.header li a {
+				border:0;
+				background:none;
+			}
+			.header li img {
+				margin:10px 0;
+				max-width:30px;
+			}
+		}
+		@media all and (max-width:335px) {
+			.header {
+				font-size:170%;
+			}
+		}
+		@media all and (max-width:310px) {
+			.header {
+				text-align:center;
+			}
+			.header img {
+				display:block;
+				margin:0 auto;
+			}
+			.header li img {
+				display:inline-block;
+			}
+		}
+		@media print {
+			.header ul {
+				display:none;
+			}
+		}
+		/*NAVIGATION*/
+		.navigation {
+			width:90%;
+			padding:5px 0;
+			text-align:center;
+			margin:0 auto 50px;
+			background:#F1F1F1;
+			border:1px solid #000;
+		}
+		.trigger {
+			display:none;
+		}
+		.navigation ul {
+			margin:0 10px;
+			font-size:120%;
+			overflow:hidden;
+			list-style:none;
+		}
+		.navigation li {
+			width:19%;
+			float:left;
+		}
+		.navigation .first, .navigation .last {
+			width:12%;
+			text-align:left;
+		}
+		.navigation .last {
+			text-align:right;
+		}
+		.navigation a {
+			padding:0 5px;
+		}
+		@media all and (max-width:650px) {
+			.navigation {
+				width:4em;
+				padding:4px 0;
+				margin:0 auto 20px;
+			}
+			.navigation:target {
+				width:95%;
+			}
+			.navigation .trigger {
+				font-size:120%;
+				background:none;
+				margin:1px auto;
+				display:inline-block;
+				text-transform:lowercase;
+			}
+			.navigation ul {
+				margin:0 5px;
+				display:none;
+			}
+			.navigation:target ul {
+				display:block;
+			}
+			.navigation li {
+				width:100%;
+			}
+			.navigation .first, .navigation .last {
+				width:100%;
+				text-align:center;
+			}
+			.navigation a {
+				margin:1px 0;
+				display:block;
+				padding:2px 5px;
+				background:#CCC;
+			}
+			.navigation a:hover {
+				background:#000;
+			}
+		}
+		@media print {
+			.navigation {
+				display:none;
+			}
+		}
+		/*CONTENT*/
+		.content {
+			width:90%;
+			margin:0 auto;
+			overflow:hidden;
+		}
+		.article {
+			width:77%;
+			float:left;
+		}
+		.article_body {
+			margin:20px 0 0;
+			position:relative;
+		}
+		.article_body p {
+			margin:0 0 1em;
+		}
+		@media print, all and (max-width:600px) {
+			small {
+				display:block;
+				padding:0 0 10px;
+			}
+			.content {
+				width:95%;
+			}
+			.article {
+				width:100%;
+			}
+			.article_body {
+				margin:15px 0 0;
+			}
+		}
+		/*MORE*/
+		.content .first:before {
+			width:28%;
+			height:6em;
+			content:'';
+			float:right;
+			display:block;
+		}
+		.more {
+			top:0;
+			right:0;
+			width:26%;
+			overflow:auto;
+			max-height:6em;
+			overflow-x:hidden;
+			position:absolute;
+		}
+		.more h2 {
+			margin:0 0 5px;
+			font-size:130%;
+			font-weight:700;
+		}
+		@media print, all and (max-width:670px) {
+			.content .first:before {
+				display:none;
+			}
+			.more {
+				top:auto;
+				right:auto;
+				width:auto;
+				overflow:auto;
+				max-height:100%;
+				position:static;
+			}
+		}
+		@media print {
+			.more {
+				display:none;
+			}
+		}
+		/*ASIDE*/
+		.aside {
+			width:22%;
+			float:right;
+		}
+		.aside a {
+			display:block;
+			margin:-4px 0 30px;
+		}
+		@media all and (max-width:750px) {
+			.aside h2 {
+				font-size:120%;
+			}
+		}
+		@media print, all and (max-width:600px) {
+			.aside {
+				display:none;
+			}
+		}
+		/*FOOTER*/
+		.footer {
+			width:90%;
+			min-height:50px;
+			margin:5px auto 0;
+			background:#F1F1F1;
+			border:1px solid #000;
+			border-bottom:0;
+		}
+		@media print, all and (max-width:414px) {
+			.footer {
+				border:0;
+				background:none;
+			}
+		}
+	</style>
+</head>
+<body id="top">
+	<nav>
+		<div class="skiplinks">
+			<ul>
+				<li><a href="#navigation">Main site navigation</a></li>
+				<li><a href="#content">Content</a></li>
+			</ul>
+		</div>
+	</nav>
+	<header>
+		<div class="header">
+			<a href="#home"><img src="images/logo.png" alt=""> Company Name</a>
+			<nav>
+				<ul>
+					<li><a href="#facebook"><img src="images/facebook.png" alt="Facebook"></a></li>
+					<li><a href="#twitter"><img src="images/twitter.png" alt="Twitter"></a></li>
+					<li><a href="#google"><img src="images/google.png" alt="Google+"></a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<nav>
+		<div id="navigation" class="navigation" role="navigation">
+			<a href="#navigation" class="trigger">Menu</a>
+			<ul>
+				<li class="first"><a href="#home">Home</a></li>
+				<li><a href="#top">eBooks</a></li>
+				<li><a href="#top">Magazines</a></li>
+				<li><a href="#top">Movies</a></li>
+				<li><a href="#top">Help</a></li>
+				<li class="last"><a href="#top">Login</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div id="content" class="content">
+		<article>
+			<div class="article">
+				<h1>Lorem ipsum dolor sit</h1>
+				<p class="details"><small>posted on 15 May 2015 by <a href="#author">Author</a></small></p>
+				<img src="images/main.png" alt="4:3">
+				<div class="article_body">
+					<p class="first">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam fermentum. Integer fringilla. Integer fringilla. Pellentesque ac turpis. Sed elementum, felis quis porttitor sollicitudin, augue nulla sodales sapien, amet posuere quam purus at lacus. Nam id neque. Morbi pulvinar nulla sit amet nisl. Etiam pharetra lacus sed velit imperdiet bibendum.</p>
+					<p>Sed quis elit. In hac habitasse platea dictumst. Maecenas justo. Donec interdum vestibulum libero. Nam laoreet dui sed magna. Nam consectetuer mollis dolor. Aenean ligula. Aliquam sed erat. Donec interdum vestibulum libero. Mauris et dolor.</p>
+					<section>
+						<div class="more">
+							<h2>More&hellip;</h2>
+							<ul>
+								<li><a href="#link1">Link #1</a></li>
+								<li><a href="#another-link">Another link</a></li>
+								<li><a href="#third-link">Third link</a></li>
+							</ul>
+						</div>
+					</section>
+				</div>
+			</div>
+		</article>
+		<aside>
+			<div class="aside">
+				<section>
+					<a href="#a-giude-to-snoopsetting">
+						<h2>A guide to snoopsetting</h2>
+						<img src="images/aside.png" alt="1:1">
+					</a>
+				</section>
+				<section>
+					<a href="#welcome-to-the-surveillance-state">
+						<h2>Welcome to the Surveillance State</h2>
+						<img src="images/aside.png" alt="1:1">
+					</a>
+				</section>
+			</div>
+		</aside>
+	</div>
+	<footer>
+		<div id="footer" class="footer"></div>
+	</footer>
+</body>
+</html>
